@@ -9,6 +9,7 @@ import {
 import InfoBox from "./InfoBox";
 import Map from "./Map";
 import Table from "./Table";
+import { sortData } from "./util";
 import "./App.css";
 
 function App() {
@@ -40,7 +41,9 @@ function App() {
             name: country.country, //United States, United Kingdom
             value: country.countryInfo.iso2, // UK, FR, USA
           }));
-          setTableData(data);
+
+          const sortedData = sortData(data);
+          setTableData(sortedData);
           setCountries(countries);
         });
     };
