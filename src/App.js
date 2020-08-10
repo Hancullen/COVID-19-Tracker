@@ -11,9 +11,11 @@ import Map from "./Map";
 import Table from "./Table";
 import { sortData } from "./util";
 import LineGraph from "./LineGraph";
+import numeral from "numeral";
+import "leaflet/dist/leaflet.css";
 import "./App.css";
 
-function App() {
+const App = () => {
   // STATE = how to write a variable in React
 
   // Call to API: https://disease.sh/v3/covid-19/countries
@@ -23,6 +25,8 @@ function App() {
   const [country, setCountry] = useState("worldwide");
   const [countryInfo, setCountryInfo] = useState({});
   const [tableData, setTableData] = useState([]);
+  const [mapCenter, setMapCenter] = useState({ lat: 25.7482, lng: 61.9241 });
+  const [mapZoom, setMapZoom] = useState(3);
 
   useEffect(() => {
     fetch("https://disease.sh/v3/covid-19/all")
@@ -113,12 +117,12 @@ function App() {
           />
           <InfoBox
             title="Deaths"
-            cases={countryInfo.todatDeaths}
+            cases={countryInfo.todayDeaths}
             total={countryInfo.deaths}
           />
         </div>
         {/* Maps */}
-        <Map />
+        <Map center={mapCenter} zoom={mapZoom} />
       </div>
 
       <Card className="app_right">
@@ -133,6 +137,6 @@ function App() {
       </Card>
     </div>
   );
-}
+};
 
 export default App;
