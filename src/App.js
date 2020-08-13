@@ -25,8 +25,9 @@ const App = () => {
   const [country, setCountry] = useState("worldwide");
   const [countryInfo, setCountryInfo] = useState({});
   const [tableData, setTableData] = useState([]);
-  const [mapCenter, setMapCenter] = useState({ lat: 25.7482, lng: 61.9241 });
+  const [mapCenter, setMapCenter] = useState({ lat: 25.7482, lng: 63.9241 });
   const [mapZoom, setMapZoom] = useState(3);
+  const [mapCountries, setMapCountries] = useState([]);
 
   useEffect(() => {
     fetch("https://disease.sh/v3/covid-19/all")
@@ -49,6 +50,7 @@ const App = () => {
 
           const sortedData = sortData(data);
           setTableData(sortedData);
+          setMapCountries(data);
           setCountries(countries);
         });
     };
@@ -75,6 +77,9 @@ const App = () => {
         setCountry(countryCode);
         //All of the data from the country response
         setCountryInfo(data);
+
+        setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
+        setMapZoom(4);
       });
   };
 
@@ -122,12 +127,12 @@ const App = () => {
           />
         </div>
         {/* Maps */}
-        <Map center={mapCenter} zoom={mapZoom} />
+        <Map countries={mapCountries} center={mapCenter} zoom={mapZoom} />
       </div>
 
       <Card className="app_right">
         <CardContent>
-          <h3>Live Cases by Country</h3>
+          <h3>Active Cases by Country</h3>
           {/* Table */}
           <Table countries={tableData} />
           <h3>Worldwide new cases</h3>
