@@ -11,10 +11,8 @@ import Map from "./Map";
 import Table from "./Table";
 import { sortData, tidyStat } from "./util";
 import LineGraph from "./LineGraph";
-import numeral from "numeral";
 import "leaflet/dist/leaflet.css";
 import "./App.css";
-import virusImg from "./images/virus.jpg";
 
 const App = () => {
   // STATE = how to write a variable in React
