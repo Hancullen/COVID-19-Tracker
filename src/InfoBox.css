@@ -1,10 +1,24 @@
 .infoBox {
   flex: 1;
   padding: 2px;
+  /* make hand pointer to click on  */
+  cursor: pointer;
 }
 
 .infoBox:not(:last-child) {
   margin-right: 15px;
+}
+
+.infoBox--selected {
+  border-top: 10px solid greenyellow;
+}
+
+.infoBox--red {
+  border-color: red;
+}
+
+.infoBox__cases--green {
+  color: lightgreen !important;
 }
 
 .infoBox__cases {

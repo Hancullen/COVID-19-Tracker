@@ -14,6 +14,7 @@ import LineGraph from "./LineGraph";
 import numeral from "numeral";
 import "leaflet/dist/leaflet.css";
 import "./App.css";
+import virusImg from "./images/virus.jpg";
 
 const App = () => {
   // STATE = how to write a variable in React
@@ -91,7 +92,8 @@ const App = () => {
       <div className="app__left">
         {/* Header */}
         <div className="app__header">
-          <h1>COVID-19 TRACKER</h1>
+          {<h1>COVID-19 TRACKER</h1>}
+          {/* <img className="imgage" src={virusImg} alt="covid-19" /> */}
           {/*Title + Select input dropdown field */}
           <FormControl className="app__dropdown">
             <Select
@@ -112,18 +114,23 @@ const App = () => {
         <div className="app__stats">
           {/* InfoBoxs title="Coronavirus cases" */}
           <InfoBox
+            isRed
+            active={casesType === "cases"}
             onClick={(e) => setCasesType("cases")}
             title="New Cases"
             cases={tidyStat(countryInfo.todayCases)}
             total={tidyStat(countryInfo.cases)}
           />
           <InfoBox
+            active={casesType === "recovered"}
             onClick={(e) => setCasesType("recovered")}
             title="Recoveries"
             cases={tidyStat(countryInfo.todayRecovered)}
             total={tidyStat(countryInfo.recovered)}
           />
           <InfoBox
+            isRed
+            active={casesType === "deaths"}
             onClick={(e) => setCasesType("deaths")}
             title="Deaths"
             cases={tidyStat(countryInfo.todayDeaths)}
@@ -139,14 +146,14 @@ const App = () => {
         />
       </div>
 
-      <Card className="app_right">
+      <Card className="app__right">
         <CardContent>
           <h3>Active Cases by Country</h3>
           {/* Table */}
           <Table countries={tableData} />
-          <h3>Worldwide new {casesType}</h3>
+          <h3 className="app__graphTitle">Worldwide new {casesType}</h3>
           {/* Graph */}
-          <LineGraph casesType={casesType} />
+          <LineGraph className="app__graph" casesType={casesType} />
         </CardContent>
       </Card>
     </div>

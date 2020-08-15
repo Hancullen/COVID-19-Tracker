@@ -12,6 +12,15 @@ body {
   padding: 20px;
 }
 
+.app__dropdown {
+  background-color: white;
+}
+
+.app__header > h1 {
+  color: red;
+  font-size: 2rem;
+}
+
 .app__header {
   display: flex;
   /*flex-direction: column;*/
@@ -20,8 +29,33 @@ body {
   justify-content: space-between;
 }
 
+.image {
+  width: 370px;
+  margin-top: 40px;
+}
+
 .app__left {
   flex: 0.9;
+}
+
+.app__right {
+  display: flex;
+  flex-direction: column;
+}
+
+.app__right .MuiCardContent-root {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.app__graph {
+  flex-grow: 1;
+}
+
+.app__graphTitle {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .app__stats {
@@ -30,8 +64,9 @@ body {
 }
 
 /* Make it responsive to all devices */
-@media (max-width: 990px) {
+@media (max-width: 890px) {
   .app {
     flex-direction: column;
+    margin: 0 10%;
   }
 }

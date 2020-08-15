@@ -1,8 +1,8 @@
 .map {
-  height: 500px;
+  height: 520px;
   background-color: white;
   padding: 1rem;
-  margin-top: 16px;
+  margin-top: 30px;
   margin-bottom: 16px;
   border-radius: 20px;
   box-shadow: 0 0 8px -4px rgba(0, 0, 0, 0.5);
@@ -12,8 +12,11 @@
   height: 100%;
 }
 
+.map .leaflet-popup-content {
+  width: 210px;
+}
 .info-flag img {
-  width: 100px;
+  width: 150px;
   border-radius: 5px;
 }
 
@@ -26,7 +29,7 @@
 
 .info-flag {
   height: 120px;
-  width: 100%;
+  width: auto;
   background-size: cover;
   border-radius: 8px;
 }
@@ -38,5 +41,5 @@
   margin-top: 5px;
 }
 .info-container {
-  width: 150px;
+  width: 211px;
 }
